@@ -1,87 +1,84 @@
 -- 1er Arrondissement
-<<<<<<< Updated upstream
-INSERT INTO arrondissement (idArrondissement, arrondissement, delimitation)
-=======
+
 INSERT INTO Commune (id, val, desce) VALUES ('COMM1', 'Antananarivo', 'Capitale de Madagascar');
 INSERT INTO Commune (id, val, desce) VALUES ('COMM2', 'Toamasina', 'Ville portuaire');
 
 
--- 1er Arrondissement
-INSERT INTO arrondissement (idArrondissement, idCommune, arrondissement, delimitation)
->>>>>>> Stashed changes
+INSERT INTO arrondissement (idArrondissement,idCommune ,arrondissement, delimitation)
 VALUES (
     'ARD001',
     'COMM1',
     '1er Arrondissement',
+    'COMM1'
     SDO_GEOMETRY(
         2003,
         4326,
         NULL,
         SDO_ELEM_INFO_ARRAY(1, 1003, 1),
         SDO_ORDINATE_ARRAY(
-            2.3364, 48.8625,
-            2.3455, 48.8621,
-            2.3451, 48.8603,
-            2.3360, 48.8605,
-            2.3364, 48.8625
+            47.080536,-18.589103,
+            46.796265,-18.840271,
+            46.918488,-18.99235,
+            47.176666,-19.028725,
+            47.558441,-18.848073,
+            47.513123,-18.643793,
+            47.194519,-18.563054,
+            47.080536,-18.589103
         )
     )
 );
 
 -- 2e Arrondissement
-INSERT INTO arrondissement (idArrondissement, arrondissement, delimitation)
+INSERT INTO arrondissement (idArrondissement, idCommune, arrondissement, delimitation)
 VALUES (
-<<<<<<< Updated upstream
-    'ARD'||getseqarrondissement(),
-    '2e Arrondissement',
-=======
     'ARD002',
     'COMM1',
     '2eme Arrondissement',
->>>>>>> Stashed changes
     SDO_GEOMETRY(
         2003,
         4326,
         NULL,
         SDO_ELEM_INFO_ARRAY(1, 1003, 1),
         SDO_ORDINATE_ARRAY(
-            2.3464, 48.8635,
-            2.3555, 48.8631,
-            2.3551, 48.8613,
-            2.3460, 48.8615,
-            2.3464, 48.8635
+            47.794647, -18.714083,
+            47.794647, -18.776539,
+            47.849579, -18.842872,
+            47.900391, -18.89228,
+            48.010254, -18.958568,
+            48.132477, -18.776539,
+            48.253326, -18.655511,
+            48.212128, -18.539607,
+            48.063812, -18.482278,
+            47.897644, -18.466639,
+            47.922363, -18.496612,
+            47.794647, -18.714083
         )
     )
 );
 
+
 -- 3e Arrondissement
-INSERT INTO arrondissement (idArrondissement, arrondissement, delimitation)
+INSERT INTO arrondissement (idArrondissement, idCommune, arrondissement, delimitation)
 VALUES (
-<<<<<<< Updated upstream
-    'ARD'||getseqarrondissement(),
-    '3e Arrondissement',
-=======
     'ARD003',
     'COMM1',
     '3eme Arrondissement',
->>>>>>> Stashed changes
     SDO_GEOMETRY(
         2003,
         4326,
         NULL,
         SDO_ELEM_INFO_ARRAY(1, 1003, 1),
         SDO_ORDINATE_ARRAY(
-            2.3564, 48.8645,
-            2.3655, 48.8641,
-            2.3651, 48.8623,
-            2.3560, 48.8625,
-            2.3564, 48.8645
+            47.327728, -19.07807,
+            47.617493, -19.075472,
+            47.765808, -19.272739,
+            47.436218, -19.357025,
+            47.264557, -19.266254,
+            47.327728, -19.07807
         )
     )
 );
 
-<<<<<<< Updated upstream
-=======
 -- 4e Arrondissement
 INSERT INTO arrondissement (idArrondissement, idCommune, arrondissement, delimitation)
 VALUES (
@@ -104,7 +101,7 @@ VALUES (
     )
 );
 
--- Insertion des propriétaires
+
 INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP001', 'Jean Dupont', 'Propriétaire de plusieurs terrains');
 INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP002', 'Marie Lafont', 'Investisseur immobilier');
 INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP003', 'Paul Martin', 'Propriétaire d’un immeuble locatif');
@@ -150,114 +147,7 @@ VALUES ('MSN012', 'PROP002', SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(47.727356, 
 
 
 
->>>>>>> Stashed changes
 /* Maison premier arrondissement */
-INSERT INTO maison (idMaison, largeur, longueur, nbEtage, localisation)
-VALUES (
-    'MSN'||getseqmaison(),
-    10,
-    15,
-    2,
-    SDO_GEOMETRY(
-        2001,
-        4326,
-        SDO_POINT_TYPE(2.3380, 48.8610, NULL),
-        NULL,
-        NULL
-    )
-);
-
-INSERT INTO maison (idMaison, largeur, longueur, nbEtage, localisation)
-VALUES (
-    'MSN'||getseqmaison(),
-    8,
-    12,
-    1,
-    SDO_GEOMETRY(
-        2001,
-        4326,
-        SDO_POINT_TYPE(2.3390, 48.8620, NULL),
-        NULL,
-        NULL
-    )
-);
-
-INSERT INTO maison (idMaison, largeur, longueur, nbEtage, localisation)
-VALUES (
-    'MSN'||getseqmaison(),
-    12,
-    18,
-    3,
-    SDO_GEOMETRY(
-        2001,
-        4326,
-        SDO_POINT_TYPE(2.3400, 48.8600, NULL),
-        NULL,
-        NULL
-    )
-);
-
-/* Deuxieme arrondissement */
-INSERT INTO maison (idMaison, largeur, longueur, nbEtage, localisation)
-VALUES (
-    'MSN'||getseqmaison(),
-    9,
-    14,
-    2,
-    SDO_GEOMETRY(
-        2001,
-        4326,
-        SDO_POINT_TYPE(2.3500, 48.8620, NULL),
-        NULL,
-        NULL
-    )
-);
-
-INSERT INTO maison (idMaison, largeur, longueur, nbEtage, localisation)
-VALUES (
-    'MSN'||getseqmaison(),
-    11,
-    16,
-    3,
-    SDO_GEOMETRY(
-        2001,
-        4326,
-        SDO_POINT_TYPE(2.3510, 48.8630, NULL),
-        NULL,
-        NULL
-    )
-);
-
-/* 3e arrondissement */
-INSERT INTO maison (idMaison, largeur, longueur, nbEtage, localisation)
-VALUES (
-    'MSN'||getseqmaison(),
-    7,
-    10,
-    1,
-    SDO_GEOMETRY(
-        2001,
-        4326,
-        SDO_POINT_TYPE(2.3600, 48.8620, NULL),
-        NULL,
-        NULL
-    )
-);
-
-INSERT INTO maison (idMaison, largeur, longueur, nbEtage, localisation)
-VALUES (
-    'MSN'||getseqmaison(),
-    13,
-    20,
-    4,
-    SDO_GEOMETRY(
-        2001,
-        4326,
-        SDO_POINT_TYPE(2.3610, 48.8630, NULL),
-        NULL,
-        NULL
-    )
-);
 
 /* Requête Spatatial */
 
