@@ -6,6 +6,8 @@ import java.util.HashMap;
 import com.google.gson.Gson;
 
 import bean.CGenUtil;
+import impot.maison.Maison;
+import utilitaire.UtilDB;
 import utils.Outil;
 
 public class Arrondissement  {
@@ -34,6 +36,12 @@ public class Arrondissement  {
         return gson.toJson(listeArrondissement);
 
     }
+    public Maison[] getMaisons(Connection c) throws Exception {
+        String sql = String.format("select * from v_maison_arr where idArrondissement='%s'", getIdCommune());
+        return (Maison[])CGenUtil.rechercher(new Maison(), sql);
+    }
+
+
     public String getIdCommune() {
         return idCommune;
     }

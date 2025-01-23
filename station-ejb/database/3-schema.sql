@@ -33,7 +33,7 @@ CREATE TABLE MaisonFille(
    largeur NUMBER(15,2)   NOT NULL,
    nbEtage NUMBER(10) DEFAULT 0,
    mois INTEGER,
-   annee INTEGER,
+   annee INTEGER
 );
 
 
@@ -47,6 +47,12 @@ CREATE TABLE payment(
    FOREIGN KEY(idMaison) REFERENCES maison(idMaison)
 );
 
+CREATE TABLE matiere(
+   idMatiere VARCHAR2(50) ,
+   matiere VARCHAR2(50) ,
+   PRIMARY KEY(idMatiere)
+);
+
 CREATE TABLE composant(
    idComposant VARCHAR2(50) ,
    composant VARCHAR2(50)  NOT NULL,
@@ -55,11 +61,6 @@ CREATE TABLE composant(
    FOREIGN KEY(idMatiere) REFERENCES matiere(idMatiere)
 );
 
-CREATE TABLE matiere(
-   idMatiere VARCHAR2(50) ,
-   matiere VARCHAR2(50) ,
-   PRIMARY KEY(idMatiere)
-);
 
 CREATE TABLE arrondissement(
    idArrondissement VARCHAR2(50) ,

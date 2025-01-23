@@ -6,6 +6,8 @@ package impot;
 
 import bean.CGenUtil;
 import bean.ClassMAPTable;
+import impot.maison.Maison;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.List;
@@ -106,35 +108,35 @@ public class Payment extends ClassMAPTable{
         this.idMaison=idMaison;
     }
     
-    public static Payment[] getAllPayments(int annee,Connection connection,String idArrondissement) throws Exception{
-        Maison[] maisons=Maison.getMaisonByIdArrondissement(idArrondissement, connection);
-        Payment[] payments=new Payment[maisons.length*12];
-        int count=0;
-        System.out.println(maisons.length+" maison");
-        for(Maison maison : maisons){
-            for(Payment payment : maison.getPayment(annee, connection)){
-                payment.maison=maison;
-                payments[count]=payment;
-                count++;
-            }
-        }
-        return payments;
-    }
+    // public static Payment[] getAllPayments(int annee,Connection connection,String idArrondissement) throws Exception{
+    //     Maison[] maisons=Maison.getMaisonByIdArrondissement(idArrondissement, connection);
+    //     Payment[] payments=new Payment[maisons.length*12];
+    //     int count=0;
+    //     System.out.println(maisons.length+" maison");
+    //     for(Maison maison : maisons){
+    //         for(Payment payment : maison.getPayment(annee, connection)){
+    //             payment.maison=maison;
+    //             payments[count]=payment;
+    //             count++;
+    //         }
+    //     }
+    //     return payments;
+    // }
     
-    public static Payment[] getAllPayments(int annee,Connection connection) throws Exception{
-        Maison[] maisons=(Maison[]) CGenUtil.rechercher(new Maison(), "select * from maison", connection);
-        Payment[] payments=new Payment[maisons.length*12];
-        int count=0;
-        System.out.println(maisons.length+" maison");
-        for(Maison maison : maisons){
-            for(Payment payment : maison.getPayment(annee, connection)){
-                payment.maison=maison;
-                payments[count]=payment;
-                count++;
-            }
-        }
-        return payments;
-    }
+    // public static Payment[] getAllPayments(int annee,Connection connection) throws Exception{
+    //     Maison[] maisons=(Maison[]) CGenUtil.rechercher(new Maison(), "select * from maison", connection);
+    //     Payment[] payments=new Payment[maisons.length*12];
+    //     int count=0;
+    //     System.out.println(maisons.length+" maison");
+    //     for(Maison maison : maisons){
+    //         for(Payment payment : maison.getPayment(annee, connection)){
+    //             payment.maison=maison;
+    //             payments[count]=payment;
+    //             count++;
+    //         }
+    //     }
+    //     return payments;
+    // }
     
     @Override
     public void construirePK(Connection c) throws Exception {

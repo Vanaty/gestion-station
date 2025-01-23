@@ -9,7 +9,6 @@ VALUES (
     'ARD001',
     'COMM1',
     '1er Arrondissement',
-    'COMM1'
     SDO_GEOMETRY(
         2003,
         4326,
