@@ -144,6 +144,21 @@ VALUES ('MSN011', 'PROP001', SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(47.584534, 
 INSERT INTO maison (idMaison, idProp, localisation) 
 VALUES ('MSN012', 'PROP002', SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(47.727356, -18.521361, NULL), NULL, NULL));
 
+INSERT ALL
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF001', 'MSN001', 400, 200, 2, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF002', 'MSN002', 150, 90, 1, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF003', 'MSN003', 600, 700, 3, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF004', 'MSN004', 300, 150, 1, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF005', 'MSN005', 540, 260, 2, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF006', 'MSN006', 470, 350, 3, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF007', 'MSN007', 220, 100, 1, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF008', 'MSN008', 600, 210, 2, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF009', 'MSN009', 500, 400, 3, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF010', 'MSN010', 250, 300, 4, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF011', 'MSN011', 260, 100, 3, 1, 2024)
+    INTO MaisonFille (id, idMaison, longueur, largeur, nbEtage, mois, annee) VALUES ('MF012', 'MSN012', 255.5, 200, 2, 1, 2024)
+SELECT 1 FROM DUAL;
+
 
 
 /* Maison premier arrondissement */

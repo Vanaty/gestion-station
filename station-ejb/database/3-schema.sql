@@ -33,7 +33,7 @@ CREATE TABLE MaisonFille(
    largeur NUMBER(15,2)   NOT NULL,
    nbEtage NUMBER(10) DEFAULT 0,
    mois INTEGER,
-   annee INTEGER,
+   annee INTEGER
 );
 
 
@@ -84,3 +84,16 @@ CREATE TABLE composant_maison(
 select c.idComposant,composant from composant_maison cm join composant c on c.idComposant = cm.idComposant where idMaison = 'MSN006'
 
 select c.idComposant,composant from composant_maison cm join composant c on c.idComposant = cm.idComposant where idMaison = 'MSN006'
+
+47,794647	-18,714083
+47,794647	-18,776539
+47,849579	-18,842872
+47,900391	-18,89228
+48,010254	-18,958568
+48,132477	-18,776539
+48,253326	-18,655511
+48,212128	-18,539607
+48,063812	-18,482278
+47,897644	-18,466639
+47,922363	-18,496612
+47,794647	-18,714083
