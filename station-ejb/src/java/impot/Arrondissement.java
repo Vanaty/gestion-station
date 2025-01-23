@@ -1,0 +1,43 @@
+package impot;
+
+import java.sql.Connection;
+import java.util.HashMap;
+
+import com.google.gson.Gson;
+
+import bean.CGenUtil;
+import utils.Outil;
+
+public class Arrondissement  {
+    private String idCommune;
+    
+    public Arrondissement(String idCommune) {
+        this.setIdCommune(idCommune);
+    }
+
+    public String getAllJson(String idCommune) throws Exception {
+        HashMap<String, String>[] listeArrondissement = Outil.getDicoTable("SELECT id,\r\n" + //
+                            "       nom,\r\n" + //
+                            "        '['||LISTAGG('['||TO_CHAR(y, '999.9999')||','|| TO_CHAR(x, '999.9999')|| ']', ', ')  WITHIN GROUP (ORDER BY vertex_id) || ']'AS coordinates\r\n " + //
+                            " FROM (\r\n" + //
+                            "    SELECT a.idArrondissement AS id,\r\n" + //
+                            "           a.arrondissement AS nom,\r\n" + //
+                            "           v.X AS x,\r\n" + //
+                            "           v.Y AS y,\r\n" + //
+                            "           ROWNUM AS vertex_id\r\n" + //
+                            "    FROM arrondissement a,\r\n" + //
+                            "         TABLE(SDO_UTIL.GETVERTICES(a.delimitation)) v\r\n" + //
+                            ") WHERE IDCOMMUNE='"+ idCommune +"'" + //
+                            " GROUP BY id , nom\r\n", null);
+        // Utiliser GSON pour convertir la liste en JSON
+        Gson gson = new Gson();
+        return gson.toJson(listeArrondissement);
+
+    }
+    public String getIdCommune() {
+        return idCommune;
+    }
+    public void setIdCommune(String idCommune) {
+        this.idCommune = idCommune;
+    }
+}
