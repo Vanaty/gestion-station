@@ -2,31 +2,17 @@ package impot.maison;
 import java.sql.Connection;
 
 import bean.*;
-public class MaisonMere extends ClassMere {
+public class Maison extends ClassMere {
     String idMaison;
     String idProp;
     double longitude;
     double latitude;
-    public ArrondissementMere() throws Exception {
+    public Maison() throws Exception {
         this.setNomTable("maison");
         this.setNomClasseFille("impot.maison.MaisonMere");
         this.setLiaisonFille("idMaison");
     }
-    @Override
-    public String getTuppleID() {
-        return idMaison;
-    }
-
-    @Override
-    public String getAttributIDName() {
-        return "idMaison";
-    }
-
-    @Override
-    public void construirePK(Connection c) throws Exception {
-        this.preparePk("MASF", "GETSEQMAISONMERE");
-        this.setId(makePK(c));
-    }
+    
     public String getIdMaison() {
         return idMaison;
     }
@@ -51,7 +37,22 @@ public class MaisonMere extends ClassMere {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    // fgk
+
+    @Override
+    public void construirePK(Connection c) throws Exception {
+        this.preparePk("MSN", "getseqmaison");
+        this.setIdMaison(makePK(c));
+    }
+
+    @Override
+    public String getTuppleID() {
+        return idMaison;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getAttributIDName() {
+        return "idMaison";// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 
 }

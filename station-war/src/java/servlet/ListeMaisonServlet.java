@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import utilitaire.Outil;
+import utils.Outil;
 
 @WebServlet("/ListeMaisonServlet")
 public class ListeMaisonServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            HashMap<String, String>[] listeMaison = Outil.getDicoTable("SELECT idMaison,\r\n" + //
-                                " (localisation).sdo_point.x AS longitude, \n" + //
-                                " (localisation).sdo_point.y AS latitude \n" + //
-                                " FROM maison ", null);
+            String idCommune = req.getParameter("idCommune");
+            HashMap<String, String>[] listeMaison = Outil.getDicoTable(String.format("select * from v_maison_arr where idArrondissement='%s'", idCommune), null);
             // Utiliser GSON pour convertir la liste en JSON
             Gson gson = new Gson();
             String jsonResponse = gson.toJson(listeMaison);
