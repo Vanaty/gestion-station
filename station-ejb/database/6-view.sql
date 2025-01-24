@@ -22,3 +22,19 @@ JOIN
     Commune c 
 ON 
     a.idCommune = c.id;
+
+
+CREATE OR REPLACE VIEW v_composant AS
+SELECT 
+    cm.idMaison,
+    c.idComposant,
+    c.composant,
+    cm.coeff as coefficient,
+    cm.mois,
+    cm.annee
+FROM 
+    composant c
+JOIN 
+    composant_maison cm
+ON 
+    c.idComposant = cm.idComposant;

@@ -13,9 +13,8 @@ public class Maison extends ClassMere {
     double longitude;
     double latitude;
     Prix prixunitaire;
-    Composant [] composant;
+    Composant[] composant;
     double surface;
-    
 
     public Maison() throws Exception {
         this.setNomTable("maison");
@@ -73,7 +72,7 @@ public class Maison extends ClassMere {
                           // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public Prix getPrix( String idCommune, int mois, int annee) throws Exception {
+    public Prix getPrix(String idCommune, int mois, int annee) throws Exception {
         String sql = "select * from prix where mois<=" + mois + " AND annee<=" + annee + " ORDER BY annee,mois desc";
         Prix[] liste = (Prix[]) CGenUtil.rechercher(new Prix(), sql);
         return liste[0];
@@ -83,49 +82,73 @@ public class Maison extends ClassMere {
         return longueur * large * nbetage;
     }
 
-    public MaisonFille getMaisonFille( int mois, int annee) throws Exception {
-        String sql = "select * from maisonfille where mois<=" + mois + " AND annee<=" + annee
+    public MaisonFille getMaisonFille(int mois, int annee) throws Exception {
+        String sql = "select * from maisonfille where mois<=" + mois + " AND annee<=" + annee + " AND idMaison='"
+                + idMaison + "'"
                 + " ORDER BY annee,mois desc";
-        return (MaisonFille) CGenUtil.rechercher(new Prix(), sql)[0];
+        return (MaisonFille) CGenUtil.rechercher(new MaisonFille(), sql)[0];
     }
 
-    public double getSurface( int mois, int annee) throws Exception {
-        MaisonFille mf = getMaisonFille( mois, annee);
+    public double getSurface(int mois, int annee) throws Exception {
+        MaisonFille mf = getMaisonFille(mois, annee);
         return mf.largeur * mf.longueur * mf.nbEtage;
     }
 
-    public Composant[] getComposant( int mois, int annee) throws Exception {
-        String sql = "select * from composant where mois<=" + mois + " AND annee<=" + annee
-                + " ORDER BY annee,mois desc";
-        return (Composant[]) CGenUtil.rechercher(new Composant(), sql)[0];
+    public Composant[] getComposant(int mois, int annee) throws Exception {
+        // Construction de la requête SQL
+        String sql = "SELECT * " +
+                "FROM v_composant vc, " +
+                "( " +
+                "    SELECT idComposant, " +
+                "           MAX(mois) AS mois, " +
+                "           MAX(annee) AS annee, " +
+                "           idMaison " +
+                "    FROM v_composant " +
+                "    WHERE annee <= " + annee + " " +
+                "          AND (annee < " + annee + " OR mois <= " + mois + ") " + // Gestion des mois et années
+                "    GROUP BY idComposant, idMaison " +
+                ") t " +
+                "WHERE vc.idComposant = t.idComposant " +
+                "      AND vc.mois = t.mois " +
+                "      AND vc.annee = t.annee " +
+                "      AND vc.idMaison = t.idMaison " +
+                "      AND vc.idMaison = '" + getIdMaison() + "'";
+
+                System.out.println("ito le requete mamoka anle coeff "+sql);
+        // Utilisation de la méthode utilitaire pour exécuter la requête et récupérer
+        // les résultats
+        return (Composant[]) CGenUtil.rechercher(new Composant(), sql);
     }
+
     public Prix getPrixunitaire() {
         return prixunitaire;
     }
 
-    public void setPrixunitaire(String idCommune,int mois,int annee) throws Exception{
-        this.prixunitaire =    getPrix(  idCommune,  mois, annee);
+    public void setPrixunitaire(String idCommune, int mois, int annee) throws Exception {
+        this.prixunitaire = getPrix(idCommune, mois, annee);
     }
 
     public Composant[] getComposant() {
         return composant;
     }
 
-    public void setComposant(int mois,int annee)throws Exception {
-        this.composant = getComposant( mois, annee);
+    public void setComposant(int mois, int annee) throws Exception {
+        this.composant = getComposant(mois, annee);
     }
 
     public double getSurface() {
         return surface;
     }
 
-    public void setSurface(int mois,int annee)throws Exception {
+    public void setSurface(int mois, int annee) throws Exception {
         this.surface = getSurface(mois, annee);
     }
-    public double calcuelecoefficient()throws Exception{
+
+    public double calcuelecoefficient() throws Exception {
         double result = 1;
         for (int i = 0; i < this.composant.length; i++) {
-            result = result * composant[i].getCoefficient();            
+            System.out.print("#" + composant[i].getCoefficient());
+            result = result * composant[i].getCoefficient();
         }
         return result;
     }

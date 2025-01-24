@@ -19,6 +19,10 @@ public class MaisonTraitementServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String idCommune = req.getParameter("idCommune");
+            if (idCommune == null) {
+                idCommune = (String) req.getSession().getAttribute("idCommune");
+            }
+
             int mois = Integer.parseInt(req.getParameter("mois"));
             int annee = Integer.parseInt(req.getParameter("annee"));
             Arrondissement arr = new Arrondissement();
@@ -26,9 +30,13 @@ public class MaisonTraitementServlet extends HttpServlet {
             Maison [] maisons = arr.getMaisons();
             for (int i = 0; i < maisons.length; i++) {
                 maisons [i].setPrixunitaire(idCommune,mois,annee);
+
                 maisons [i].setComposant(mois,annee);
                 maisons [i].setSurface(mois,annee);
-                System.out.println(maisons[i].calculerMontantAPayer());
+                System.out.println("surface : "+maisons[i].getSurface());
+                System.out.println("coefficient:"+maisons[i].calcuelecoefficient());
+                System.out.println("PU:"+maisons[i].getPrixunitaire().getValeur());
+                System.out.println(maisons[i].getIdMaison()+"  " + maisons[i].calculerMontantAPayer());
             }
             
         } catch (Exception e) {
