@@ -160,6 +160,10 @@ INSERT ALL
 SELECT 1 FROM DUAL;
 
 
+INSERT INTO Prix (id, valeur, mois, annee, idCommune) VALUES ('PRX001', 5000.50, 1, 2024, 'COMM1');
+INSERT INTO Prix (id, valeur, mois, annee, idCommune) VALUES ('PRX002', 6200.75, 1, 2024, 'COMM2');
+INSERT INTO Prix (id, valeur, mois, annee, idCommune) VALUES ('PRX003', 5000.50, 5, 2024, 'COMM1');
+INSERT INTO Prix (id, valeur, mois, annee, idCommune) VALUES ('PRX004', 6200.75, 5, 2024, 'COMM2');
 
 /* Maison premier arrondissement */
 
@@ -182,103 +186,121 @@ VALUES ('PAY00'||getseqpayment(), 3, 2025, 'MSN2');
 
 -- Insertion des paiements pour la maison MSN008
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 2, 2025, 'MSN3');
+VALUES ('PAY00'||getseqpayment(), 2, 2025, 'MSN003');
 
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 4, 2025, 'MSN3');
+VALUES ('PAY00'||getseqpayment(), 4, 2025, 'MSN003');
 
 -- Insertion des paiements pour la maison MSN009
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN4');
+VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN004');
 
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 5, 2025, 'MSN4');
+VALUES ('PAY00'||getseqpayment(), 5, 2025, 'MSN004');
 
 -- Insertion des paiements pour la maison MSN0010
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN5');
+VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN005');
 
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 7, 2025, 'MSN5');
-
-
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN6');
-
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN6');
+VALUES ('PAY00'||getseqpayment(), 7, 2025, 'MSN005');
 
 
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN7');
+VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN006');
 
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 9, 2025, 'MSN7');
+VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN006');
+
 
 INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN7');
+VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN007');
 
-insert into matiere(idMatiere,matiere) values('MAT00'||getseqmatiere(),'Bois');
-insert into matiere(idMatiere,matiere) values('MAT00'||getseqmatiere(),'Fer');
-insert into matiere(idMatiere,matiere) values('MAT00'||getseqmatiere(),'Acier');
-insert into matiere(idMatiere,matiere) values('MAT00'||getseqmatiere(),'Beton');
+INSERT INTO payment (idPayment, mois, annee, idMaison)
+VALUES ('PAY00'||getseqpayment(), 9, 2025, 'MSN007');
 
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Toit en bois',0.5,'MAT001');
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Toit en Fer',1,'MAT002');
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Toit en Acier',1.5,'MAT003');
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Toit en Beton',2,'MAT004');
+INSERT INTO payment (idPayment, mois, annee, idMaison)
+VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN007');
 
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Mur en bois',0.7,'MAT001');
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Mur en Fer',1.25,'MAT002');
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Mur en Acier',0.75,'MAT003');
-insert into composant(idComposant,composant,coefficient,idMatiere) values('CMP00'||getseqcomposant(),'Mur en Beton',0.55,'MAT004');
+insert into matiere(idMatiere,matiere) values('MAT001','Bois');
+insert into matiere(idMatiere,matiere) values('MAT002','Fer');
+insert into matiere(idMatiere,matiere) values('MAT003','Acier');
+insert into matiere(idMatiere,matiere) values('MAT004','Beton');
 
--- Maison MSN006
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN1', 'CMP001');
+insert into composant(idComposant,composant,idMatiere) values('CMP001','Toit en bois','MAT001');
+insert into composant(idComposant,composant,idMatiere) values('CMP002','Toit en Fer','MAT002');
+insert into composant(idComposant,composant,idMatiere) values('CMP003','Toit en Acier','MAT003');
+insert into composant(idComposant,composant,idMatiere) values('CMP004','Toit en Beton','MAT004');
 
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN1', 'CMP005');
+insert into composant(idComposant,composant,idMatiere) values('CMP005','Mur en bois','MAT001');
+insert into composant(idComposant,composant,idMatiere) values('CMP006','Mur en Fer','MAT002');
+insert into composant(idComposant,composant,idMatiere) values('CMP007','Mur en Acier','MAT003');
+insert into composant(idComposant,composant,idMatiere) values('CMP008','Mur en Beton','MAT004');
 
--- Maison MSN007
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN2', 'CMP002');
 
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN2', 'CMP006');
+-- Insertion avec des valeurs pour coeff, mois et annee
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee) 
+VALUES ('MSN1', 'CMP001', 1.2, 1, 2024);
 
--- Maison MSN008
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN3', 'CMP003');
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN1', 'CMP005', 1.5, 1, 2024);
 
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN3', 'CMP007');
+-- Maison MSN2
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN2', 'CMP002', 1.3, 2, 2024);
 
--- Maison MSN009
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN4', 'CMP004');
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN2', 'CMP006', 1.7, 2, 2024);
 
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN4', 'CMP008');
+-- Maison MSN3
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN3', 'CMP003', 1.4, 3, 2024);
 
--- Maison MSN0010
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN5', 'CMP001');
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN3', 'CMP007', 1.6, 3, 2024);
 
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN5', 'CMP005');
+-- Maison MSN4
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN4', 'CMP004', 1.8, 4, 2024);
 
--- Maison MSN0010
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN6', 'CMP003');
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN4', 'CMP008', 2.0, 4, 2024);
 
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN6', 'CMP006');
+-- Maison MSN5
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN5', 'CMP001', 1.1, 5, 2024);
 
--- Maison MSN0010
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN7', 'CMP007');
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN5', 'CMP005', 1.3, 5, 2024);
 
-INSERT INTO composant_maison (idMaison, idComposant)
-VALUES ('MSN7', 'CMP002');
+-- Maison MSN6
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN6', 'CMP003', 1.2, 6, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN6', 'CMP006', 1.9, 6, 2024);
+
+-- Maison MSN7
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN7', 'CMP007', 1.4, 7, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN7', 'CMP002', 1.5, 7, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN8', 'CMP005', 1.3, 5, 2024);
+
+-- Maison MSN6
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN9', 'CMP003', 1.2, 6, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN10', 'CMP006', 1.9, 6, 2024);
+
+-- Maison MSN7
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN11', 'CMP007', 1.4, 7, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN12', 'CMP002', 1.5, 7, 2024);
 
