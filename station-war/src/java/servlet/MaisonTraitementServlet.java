@@ -33,8 +33,9 @@ public class MaisonTraitementServlet extends HttpServlet {
 
                 maisons [i].setComposant(mois,annee);
                 maisons [i].setSurface(mois,annee);
-                System.out.println(maisons[i].getSurface());
-                System.out.println(maisons[i].calcuelecoefficient());
+                System.out.println("surface : "+maisons[i].getSurface());
+                System.out.println("coefficient:"+maisons[i].calcuelecoefficient());
+                System.out.println("PU:"+maisons[i].getPrixunitaire().getValeur());
                 System.out.println(maisons[i].getIdMaison()+"  " + maisons[i].calculerMontantAPayer());
             }
             

@@ -46,11 +46,11 @@ public class Composant extends ClassMAPTable {
     }
 
     public Composant(){
-        this.setNomTable("composant");
+        this.setNomTable("v_composant");
     }
     
     public Composant(String composant){
-        this.setNomTable("composant");
+        this.setNomTable("v_composant");
         this.composant=composant;
     }
     
