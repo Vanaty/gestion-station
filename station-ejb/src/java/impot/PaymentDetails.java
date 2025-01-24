@@ -23,7 +23,6 @@ public class PaymentDetails extends ClassMAPTable{
     public int annee;
     public String idMaison;
     double surface;
-    double nbetage;
     double prixUnitaire;
     double hetra;
     
@@ -76,13 +75,7 @@ public class PaymentDetails extends ClassMAPTable{
         this.surface = surface;
     }
 
-    public double getNbetage() {
-        return nbetage;
-    }
-
-    public void setNbetage(double nbetage) {
-        this.nbetage = nbetage;
-    }
+    
 
     public double getPrixUnitaire() {
         return prixUnitaire;
@@ -100,7 +93,7 @@ public class PaymentDetails extends ClassMAPTable{
         this.hetra = hetra;
     }
     public PaymentDetails(){
-        this.setNomTable("payementDetails");
+        this.setNomTable("paymentDetails");
     }
     @Override
     public void construirePK(Connection c) throws Exception {

@@ -41,7 +41,7 @@ public class Arrondissement  {
         return gson.toJson(listeArrondissement);
 
     }
-    public Maison[] getMaisons(Connection c) throws Exception {
+    public Maison[] getMaisonsid() throws Exception {
         String sql = String.format("select * from v_maison_arr where idArrondissement='%s' and idCommune='%s'",getIdArrondissement(), getIdCommune());
         return (Maison[])CGenUtil.rechercher(new Maison(), sql);
     }

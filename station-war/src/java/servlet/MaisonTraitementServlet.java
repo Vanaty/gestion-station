@@ -13,6 +13,7 @@ import impot.maison.*;
 import impot.Arrondissement;
 import utils.Outil;
 import impot.Payment;
+import impot.PaymentDetails;
 
 @WebServlet("/TraitementMaisonServlet")
 public class MaisonTraitementServlet extends HttpServlet {
@@ -37,13 +38,19 @@ public class MaisonTraitementServlet extends HttpServlet {
                     maisons [i].setSurface(mois,annee);
                     Payment p = new  Payment(idMaison, req.getParameter("mois"), req.getParameter("annee"));
                     p.insertToTable();
-                    System.out.println("surface : "+maisons[i].getSurface());
-                System.out.println("coefficient:"+maisons[i].calcuelecoefficient());
-                System.out.println("PU:"+maisons[i].getPrixunitaire().getValeur());
-                System.out.println(maisons[i].getIdMaison()+"  " + maisons[i].calculerMontantAPayer());
+                    PaymentDetails pay = new PaymentDetails();
+                    pay.setIdProprietaire(maisons[i].getIdProp());
+                    pay.setSurface(maisons[i].getSurface());
+                    pay.setMois(mois);
+                    pay.setIdMaison(maisons[i].getIdMaison());
+                    pay.setAnnee(annee);
+                    pay.setPrixUnitaire(maisons[i].getPrixunitaire().getValeur());
+                    pay.setHetra(maisons[i].calculerMontantAPayer());
+                    pay.insertToTable();
                 }
-                
-                
+                else {
+                    throw new Exception("efa paye");
+                }
             }
 
             
