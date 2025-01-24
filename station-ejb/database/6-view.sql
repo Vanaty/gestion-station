@@ -6,7 +6,8 @@ SELECT
     m.idProp,
     (m.localisation).sdo_point.x AS longitude,
     (m.localisation).sdo_point.y AS latitude,
-    a.idArrondissement
+    a.idArrondissement,
+    c.id as idCommune
 FROM
     maison m
 JOIN 

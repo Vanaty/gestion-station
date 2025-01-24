@@ -1,3 +1,9 @@
+CREATE TABLE IMPOTUSER(
+   id VARCHAR2(50) PRIMARY KEY,
+   idUtilisateur VARCHAR2(50),
+   idCommune VARCHAR2(50)
+);
+
 CREATE TABLE Commune(
    id VARCHAR2(50) PRIMARY KEY,
    val VARCHAR2(50),

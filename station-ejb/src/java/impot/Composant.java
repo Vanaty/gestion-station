@@ -41,6 +41,10 @@ public class Composant extends ClassMAPTable {
     
     
     
+    public double getCoefficient() {
+        return coefficient;
+    }
+
     public Composant(){
         this.setNomTable("composant");
     }

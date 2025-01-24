@@ -33,7 +33,10 @@ SELECT id,nom,'['||LISTAGG('['||TO_CHAR(y, '999.9999')||','|| TO_CHAR(x, '999.99
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String idCommune = req.getParameter("idCommune");
-            String jsonResponse = new Arrondissement().getAllJson(idCommune);
+            if (idCommune == null) {
+                idCommune = (String) req.getSession().getAttribute("idCommune");
+            }
+            String jsonResponse = new Arrondissement(idCommune).getAllJson();
             resp.getWriter().print(jsonResponse);
         } catch (Exception e) {
             // TODO: handle exception

@@ -1,5 +1,5 @@
 -- 1er Arrondissement
-
+INSERT INTO IMPOTUSER(id, idCommune,idUtilisateur) VALUES('IUSER001','COMM1','1060')
 INSERT INTO Commune (id, val, desce) VALUES ('COMM1', 'Antananarivo', 'Capitale de Madagascar');
 INSERT INTO Commune (id, val, desce) VALUES ('COMM2', 'Toamasina', 'Ville portuaire');
 

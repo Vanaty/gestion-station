@@ -1,3 +1,13 @@
+CREATE OR REPLACE FUNCTION getseqimpotuser
+    RETURN NUMBER
+IS
+    next_value NUMBER;
+BEGIN
+    SELECT seq_impot_user.NEXTVAL INTO next_value FROM dual;
+    RETURN next_value;
+END;
+/
+
 CREATE OR REPLACE FUNCTION getseqmaison
     RETURN NUMBER
 IS

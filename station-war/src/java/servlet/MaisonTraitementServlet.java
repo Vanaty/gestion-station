@@ -9,23 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-
+import impot.maison.*;
+import impot.Arrondissement;
 import utils.Outil;
 
-@WebServlet("/ListeMaisonServlet")
-public class ListeMaisonServlet extends HttpServlet {
+@WebServlet("/TraitementMaisonServlet")
+public class MaisonTraitementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String idCommune = req.getParameter("idCommune");
-            if (idCommune == null) {
-                idCommune = (String) req.getSession().getAttribute("idCommune");
+            int mois = Integer.parseInt(req.getParameter("mois"));
+            int annee = Integer.parseInt(req.getParameter("annee"));
+            Arrondissement arr = new Arrondissement();
+            arr.setIdCommune(idCommune);
+            Maison [] maisons = arr.getMaisons();
+            for (int i = 0; i < maisons.length; i++) {
+                maisons [i].setPrixunitaire(idCommune,mois,annee);
+                maisons [i].setComposant(mois,annee);
+                maisons [i].setSurface(mois,annee);
+                System.out.println(maisons[i].calculerMontantAPayer());
             }
-            HashMap<String, String>[] listeMaison = Outil.getDicoTable(String.format("select * from v_maison_arr where idCommune='%s'", idCommune), null);
-            // Utiliser GSON pour convertir la liste en JSON
-            Gson gson = new Gson();
-            String jsonResponse = gson.toJson(listeMaison);
-            resp.getWriter().print(jsonResponse);
+            
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

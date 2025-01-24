@@ -12,17 +12,22 @@ import utils.Outil;
 
 public class Arrondissement  {
     private String idCommune;
-    
+    private String idArrondissement;
+
     public Arrondissement(String idCommune) {
         this.setIdCommune(idCommune);
     }
 
-    public String getAllJson(String idCommune) throws Exception {
+    public Arrondissement() {
+    }
+
+    public String getAllJson() throws Exception {
         HashMap<String, String>[] listeArrondissement = Outil.getDicoTable("SELECT id,\r\n" + //
                             "       nom,\r\n" + //
                             "        '['||LISTAGG('['||TO_CHAR(y, '999.9999')||','|| TO_CHAR(x, '999.9999')|| ']', ', ')  WITHIN GROUP (ORDER BY vertex_id) || ']'AS coordinates\r\n " + //
                             " FROM (\r\n" + //
-                            "    SELECT a.idArrondissement AS id,\r\n" + //
+                            "    SELECT a.idcommune,"+
+                            "           a.idArrondissement AS id,\r\n" + //
                             "           a.arrondissement AS nom,\r\n" + //
                             "           v.X AS x,\r\n" + //
                             "           v.Y AS y,\r\n" + //
@@ -37,7 +42,11 @@ public class Arrondissement  {
 
     }
     public Maison[] getMaisons(Connection c) throws Exception {
-        String sql = String.format("select * from v_maison_arr where idArrondissement='%s'", getIdCommune());
+        String sql = String.format("select * from v_maison_arr where idArrondissement='%s' and idCommune='%s'",getIdArrondissement(), getIdCommune());
+        return (Maison[])CGenUtil.rechercher(new Maison(), sql);
+    }
+    public Maison[] getMaisons() throws Exception {
+        String sql = String.format("select * from v_maison_arr where idCommune='%s'", getIdCommune());
         return (Maison[])CGenUtil.rechercher(new Maison(), sql);
     }
 
@@ -48,4 +57,13 @@ public class Arrondissement  {
     public void setIdCommune(String idCommune) {
         this.idCommune = idCommune;
     }
+
+    public String getIdArrondissement() {
+        return idArrondissement;
+    }
+
+    public void setIdArrondissement(String idArrondissement) {
+        this.idArrondissement = idArrondissement;
+    }
+    
 }

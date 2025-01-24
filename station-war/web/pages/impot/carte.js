@@ -1,5 +1,5 @@
  // Initialiser la carte
- var map = L.map('map').setView([48.8566, 2.3522], 13); // Paris
+ var map = L.map('map').setView([-19.3570,  47.4362], 9); // Paris
  // Ajouter une couche OpenStreetMap
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

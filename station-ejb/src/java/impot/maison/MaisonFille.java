@@ -1,8 +1,8 @@
 package impot.maison;
+
 import java.sql.Connection;
 
 import bean.*;
-import maison.Maison;
 
 public class MaisonFille extends ClassFille {
     String id;

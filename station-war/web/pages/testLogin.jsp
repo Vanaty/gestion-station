@@ -3,6 +3,7 @@
 <%@page import="mg.cnaps.configuration.Configuration"%>
 <%@page import="user.*"%>
 <%@ page import="utilitaire.*" %>
+<%@ page import="impot.ImpotUser" %>
 <%@ page import="bean.CGenUtil" %>
 <%@ page import="lc.Direction" %>
 <%@ page import="java.net.InetAddress" %>
@@ -46,7 +47,11 @@
         crd.setId(ut.getAdruser());
         System.out.println("AVANT MIDATY LOG DIR "+utilitaire.Utilitaire.heureCouranteHMS());
         TypeObjet[] ret = (TypeObjet[]) CGenUtil.rechercher(crd, null, null, "");
+        ImpotUser where = new ImpotUser();
+        where.setIdUtilisateur(String.valueOf(u.getUser().getRefuser()));
+        ImpotUser iu = (ImpotUser) CGenUtil.rechercher(where,null,null,"")[0];
         System.out.println("APRESSS MIDATY LOG DIR "+utilitaire.Utilitaire.heureCouranteHMS());
+        session.setAttribute("idCommune",iu.getIdCommune());
         session.setAttribute("entmenu", "_all-skins");
         session.setAttribute("langue", "fr");
         lien = "module.jsp";
