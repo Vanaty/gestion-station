@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import bean.*;
 import impot.Composant;
+import impot.Payment;
 import impot.Prix;
 
 public class Maison extends ClassMere {
@@ -130,6 +131,18 @@ public class Maison extends ClassMere {
     }
     public double calculerMontantAPayer() throws Exception{
         return calcuelecoefficient()*getSurface()*getPrixunitaire().getValeur();
+    }
+    public Payment[] getPayment(int annee,Connection connection) throws Exception{
+        Payment[] payments=new Payment[12];
+        for(int i=0;i<12;i++){
+            Payment[] payment=(Payment[])CGenUtil.rechercher(new Payment(), "select * from payment where idMaison = '"+this.getIdMaison()+"' and mois="+(i+1)+" and annee="+annee,connection);
+            if(payment.length==0){
+               payments[i]=new Payment(this,i+1,annee,false);
+               continue;
+            }
+            payments[i]=payment[0].setPaye(true);
+        }
+        return payments;
     }
     
 
