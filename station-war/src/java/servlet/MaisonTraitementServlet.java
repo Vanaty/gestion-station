@@ -19,6 +19,10 @@ public class MaisonTraitementServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String idCommune = req.getParameter("idCommune");
+            if (idCommune == null) {
+                idCommune = (String) req.getSession().getAttribute("idCommune");
+            }
+            
             int mois = Integer.parseInt(req.getParameter("mois"));
             int annee = Integer.parseInt(req.getParameter("annee"));
             Arrondissement arr = new Arrondissement();

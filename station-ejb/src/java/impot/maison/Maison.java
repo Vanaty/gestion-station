@@ -85,7 +85,7 @@ public class Maison extends ClassMere {
     public MaisonFille getMaisonFille( int mois, int annee) throws Exception {
         String sql = "select * from maisonfille where mois<=" + mois + " AND annee<=" + annee
                 + " ORDER BY annee,mois desc";
-        return (MaisonFille) CGenUtil.rechercher(new Prix(), sql)[0];
+        return (MaisonFille) CGenUtil.rechercher(new MaisonFille(), sql)[0];
     }
 
     public double getSurface( int mois, int annee) throws Exception {
@@ -94,9 +94,8 @@ public class Maison extends ClassMere {
     }
 
     public Composant[] getComposant( int mois, int annee) throws Exception {
-        String sql = "select * from composant where mois<=" + mois + " AND annee<=" + annee
-                + " ORDER BY annee,mois desc";
-        return (Composant[]) CGenUtil.rechercher(new Composant(), sql)[0];
+        String sql = "SELECT * FROM v_composant vc,(SELECT idComposant,MAX(mois) AS mois,MAX(annee) AS annee,idMaison FROM v_composant WHERE annee<="+annee+" AND mois<="+mois+" GROUP BY idComposant, idMaison) t WHERE vc.idComposant = t.idComposant AND vc.mois=t.mois AND vc.annee=t.annee AND vc.idMaison=t.idMaison AND vc.idMaison='"+getIdMaison()+"'";
+        return (Composant[]) CGenUtil.rechercher(new Composant(), sql);
     }
     public Prix getPrixunitaire() {
         return prixunitaire;
