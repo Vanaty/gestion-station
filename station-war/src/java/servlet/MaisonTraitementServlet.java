@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import impot.maison.*;
 import impot.Arrondissement;
 import utils.Outil;
+import impot.Payment;
 
 @WebServlet("/TraitementMaisonServlet")
 public class MaisonTraitementServlet extends HttpServlet {
@@ -25,19 +26,26 @@ public class MaisonTraitementServlet extends HttpServlet {
 
             int mois = Integer.parseInt(req.getParameter("mois"));
             int annee = Integer.parseInt(req.getParameter("annee"));
+            String idMaison = req.getParameter("idMaison");
             Arrondissement arr = new Arrondissement();
             arr.setIdCommune(idCommune);
             Maison [] maisons = arr.getMaisons();
             for (int i = 0; i < maisons.length; i++) {
-                maisons [i].setPrixunitaire(idCommune,mois,annee);
-
-                maisons [i].setComposant(mois,annee);
-                maisons [i].setSurface(mois,annee);
-                System.out.println("surface : "+maisons[i].getSurface());
+                if(maisons[i].getIdMaison().compareToIgnoreCase(idMaison)==0){
+                    maisons [i].setPrixunitaire(idCommune,mois,annee);
+                    maisons [i].setComposant(mois,annee);
+                    maisons [i].setSurface(mois,annee);
+                    Payment p = new  Payment(idMaison, req.getParameter("mois"), req.getParameter("annee"));
+                    p.insertToTable();
+                    System.out.println("surface : "+maisons[i].getSurface());
                 System.out.println("coefficient:"+maisons[i].calcuelecoefficient());
                 System.out.println("PU:"+maisons[i].getPrixunitaire().getValeur());
                 System.out.println(maisons[i].getIdMaison()+"  " + maisons[i].calculerMontantAPayer());
+                }
+                
+                
             }
+
             
         } catch (Exception e) {
             // TODO: handle exception
