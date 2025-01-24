@@ -83,7 +83,7 @@ public class Maison extends ClassMere {
     }
 
     public MaisonFille getMaisonFille( int mois, int annee) throws Exception {
-        String sql = "select * from maisonfille where mois<=" + mois + " AND annee<=" + annee
+        String sql = "select * from maisonfille where mois<=" + mois + " AND annee<=" + annee + " AND idMaison='"+idMaison+"'"
                 + " ORDER BY annee,mois desc";
         return (MaisonFille) CGenUtil.rechercher(new MaisonFille(), sql)[0];
     }
@@ -123,6 +123,7 @@ public class Maison extends ClassMere {
     public double calcuelecoefficient()throws Exception{
         double result = 1;
         for (int i = 0; i < this.composant.length; i++) {
+            System.out.print("#"+composant[i].getCoefficient());
             result = result * composant[i].getCoefficient();            
         }
         return result;

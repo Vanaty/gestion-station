@@ -22,7 +22,7 @@ public class MaisonTraitementServlet extends HttpServlet {
             if (idCommune == null) {
                 idCommune = (String) req.getSession().getAttribute("idCommune");
             }
-            
+
             int mois = Integer.parseInt(req.getParameter("mois"));
             int annee = Integer.parseInt(req.getParameter("annee"));
             Arrondissement arr = new Arrondissement();
@@ -30,9 +30,12 @@ public class MaisonTraitementServlet extends HttpServlet {
             Maison [] maisons = arr.getMaisons();
             for (int i = 0; i < maisons.length; i++) {
                 maisons [i].setPrixunitaire(idCommune,mois,annee);
+
                 maisons [i].setComposant(mois,annee);
                 maisons [i].setSurface(mois,annee);
-                System.out.println(maisons[i].calculerMontantAPayer());
+                System.out.println(maisons[i].getSurface());
+                System.out.println(maisons[i].calcuelecoefficient());
+                System.out.println(maisons[i].getIdMaison()+"  " + maisons[i].calculerMontantAPayer());
             }
             
         } catch (Exception e) {
