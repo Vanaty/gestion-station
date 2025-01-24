@@ -90,12 +90,11 @@ VALUES (
         NULL,
         SDO_ELEM_INFO_ARRAY(1, 1003, 1),
         SDO_ORDINATE_ARRAY(
-            47.327728, -19.07807,
-            47.617493, -19.075472,
-            47.765808, -19.272739,
-            47.436218, -19.357025,
-            47.264557, -19.266254,
-            47.327728, -19.07807
+            47.463684,-18.377986,
+            47.590027,-18.691951,
+            47.82486,-18.552627,
+            47.627106,-18.329732,
+            47.463684,-18.377986
         )
     )
 );
@@ -283,9 +282,6 @@ VALUES ('MSN6', 'CMP006', 1.9, 6, 2024);
 -- Maison MSN7
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
 VALUES ('MSN7', 'CMP007', 1.4, 7, 2024);
-
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN7', 'CMP002', 1.5, 7, 2024);
 
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
 VALUES ('MSN8', 'CMP005', 1.3, 5, 2024);
