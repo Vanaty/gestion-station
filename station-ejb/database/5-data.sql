@@ -239,64 +239,64 @@ insert into composant(idComposant,composant,idMatiere) values('CMP008','Mur en B
 
 -- Insertion avec des valeurs pour coeff, mois et annee
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee) 
-VALUES ('MSN1', 'CMP001', 1.2, 1, 2024);
+VALUES ('MSN001', 'CMP001', 1.2, 1, 2024);
 
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN1', 'CMP005', 1.5, 1, 2024);
+VALUES ('MSN001', 'CMP005', 1.5, 1, 2024);
 
--- Maison MSN2
+-- Maison MSN002
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN2', 'CMP002', 1.3, 2, 2024);
-
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN2', 'CMP006', 1.7, 2, 2024);
-
--- Maison MSN3
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN3', 'CMP003', 1.4, 3, 2024);
+VALUES ('MSN002', 'CMP002', 1.3, 2, 2024);
 
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN3', 'CMP007', 1.6, 3, 2024);
+VALUES ('MSN002', 'CMP006', 1.7, 2, 2024);
 
--- Maison MSN4
+-- Maison MSN003
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN4', 'CMP004', 1.8, 4, 2024);
-
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN4', 'CMP008', 2.0, 4, 2024);
-
--- Maison MSN5
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN5', 'CMP001', 1.1, 5, 2024);
+VALUES ('MSN003', 'CMP003', 1.4, 3, 2024);
 
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN5', 'CMP005', 1.3, 5, 2024);
+VALUES ('MSN003', 'CMP007', 1.6, 3, 2024);
 
--- Maison MSN6
+-- Maison MSN004
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN6', 'CMP003', 1.2, 6, 2024);
-
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN6', 'CMP006', 1.9, 6, 2024);
-
--- Maison MSN7
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN7', 'CMP007', 1.4, 7, 2024);
+VALUES ('MSN004', 'CMP004', 1.8, 4, 2024);
 
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN8', 'CMP005', 1.3, 5, 2024);
+VALUES ('MSN004', 'CMP008', 2.0, 4, 2024);
 
--- Maison MSN6
+-- Maison MSN005
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN9', 'CMP003', 1.2, 6, 2024);
-
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN10', 'CMP006', 1.9, 6, 2024);
-
--- Maison MSN7
-INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN11', 'CMP007', 1.4, 7, 2024);
+VALUES ('MSN005', 'CMP001', 1.1, 5, 2024);
 
 INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
-VALUES ('MSN12', 'CMP002', 1.5, 7, 2024);
+VALUES ('MSN005', 'CMP005', 1.3, 5, 2024);
+
+-- Maison MSN006
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN006', 'CMP003', 1.2, 6, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN006', 'CMP006', 1.9, 6, 2024);
+
+-- Maison MSN007
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN007', 'CMP007', 1.4, 7, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN008', 'CMP005', 1.3, 5, 2024);
+
+-- Maison MSN006
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN009', 'CMP003', 1.2, 6, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN010', 'CMP006', 1.9, 6, 2024);
+
+-- Maison MSN007
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN011', 'CMP007', 1.4, 7, 2024);
+
+INSERT INTO composant_maison (idMaison, idComposant, coeff, mois, annee)
+VALUES ('MSN012', 'CMP002', 1.5, 7, 2024);
 
