@@ -57,3 +57,14 @@ BEGIN
     RETURN next_value;
 END;
 /
+
+
+CREATE OR REPLACE FUNCTION getseqpaymentdetails
+    RETURN NUMBER
+IS
+    next_value NUMBER;
+BEGIN
+    SELECT seq_payment_details.NEXTVAL INTO next_value FROM dual;
+    RETURN next_value;
+END;
+/

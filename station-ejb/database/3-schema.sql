@@ -52,6 +52,18 @@ CREATE TABLE payment(
    PRIMARY KEY(idPayment),
    FOREIGN KEY(idMaison) REFERENCES maison(idMaison)
 );
+CREATE TABLE PaymentDetails (
+    id VARCHAR2(50) PRIMARY KEY,
+    idProprietaire VARCHAR2(50) NOT NULL,
+    mois INTEGER NOT NULL,
+    annee INTEGER NOT NULL,
+    idMaison VARCHAR2(50) NOT NULL,
+    surface NUMBER(10,2),
+    nbetage NUMBER(10,2),
+    prixUnitaire NUMBER(15,2),
+    hetra NUMBER(15,2)
+);
+
 
 CREATE TABLE matiere(
    idMatiere VARCHAR2(50) ,
