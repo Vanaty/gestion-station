@@ -161,7 +161,7 @@ public class Maison extends ClassMere {
     public double calcuelecoefficient() throws Exception {
         double result = 1;
         for (int i = 0; i < this.composant.length; i++) {
-            System.out.print("#" + composant[i].getCoefficient());
+            // System.out.print("#" + composant[i].getCoefficient());
             result = result * composant[i].getCoefficient();
         }
         return result;

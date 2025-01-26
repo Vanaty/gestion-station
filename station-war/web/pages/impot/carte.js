@@ -38,15 +38,16 @@ function afficheMaison() {
              L.marker([lat, lon])
                  .addTo(map)
                  .bindPopup(`
-                    <div>
-                        <button onclick="window.open('module.jsp?but=impot/payment/formPayment.jsp&idMaison=${maison.IDMAISON}')">
-                            Payer impôt
-                        </button>
-                        <br>
-                        <button onclick="window.open('module.jsp?but=impot/maisonDetails.jsp&idMaison=${maison.IDMAISON}&annee=2025')">
-                            Détails Maison
-                        </button>
-                    </div>
+                 <div>
+                    <button onclick="window.location.href='module.jsp?but=impot/payment/formPayment.jsp&idMaison=${maison.IDMAISON}'">
+                        Payer impôt
+                    </button>
+                    <br>
+                    <button onclick="window.location.href='module.jsp?but=impot/maisonDetails.jsp&idMaison=${maison.IDMAISON}&annee=2025'">
+                        Détails Maison
+                    </button>
+                </div>
+             
                 `);
 
          });
@@ -56,12 +57,12 @@ function afficheMaison() {
      });
 }
 
-function listeImpot(idArrondissement){
-    window.open(`module.jsp?but=liste.jsp&idArrondissement=${idArrondissement}&annee=2025}`);
+function listeImpot(idArrondissement) {
+    window.location.href = `module.jsp?but=liste.jsp&idArrondissement=${idArrondissement}&annee=2025`;
 }
 
-function ajouterMaison(idArrondissement){
-    window.open(`module.jsp?but=insertionMaison&longitude=${longitude}&lattitude=${lattitude}`);
+function ajouterMaison(idArrondissement) {
+    window.location.href = `module.jsp?but=insertionMaison&longitude=${longitude}&lattitude=${lattitude}`;
 }
 
 function afficheArrondissement() {
@@ -86,7 +87,7 @@ function afficheArrondissement() {
              })
                  .addTo(map)
                  .bindPopup(`
-                    <button onclick="listeImpot(window.open('module.jsp?but=impot/liste.jsp&idArrondissement=${arrondissement.ID}&annee=2025'))">impot</button>`);
+                 <button onclick="listeImpot('${arrondissement.ID}')">Impôt</button>♦`);
                  //.bindPopup(`<b>${arrondissement.NOM}</b><br>ID: ${arrondissement.ID}`);
                 console.log(arrondissement);
                  //  console.log("Les coordonnees de " + arrondissement.NOM + " est ", coordinates);

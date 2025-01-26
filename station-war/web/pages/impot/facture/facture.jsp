@@ -14,14 +14,14 @@
     
     String listeCrt[] = {"id", "idMaison","mois","annee"};
     String listeInt[] = {};
-    String libEntete[] = {"id", "idProprietaire","mois","annee","idMaison","surface","prixUnitaire", "hetra"};
-    String libEnteteAffiche[] = {"id", "idProprietaire","mois","annee","idMaison","surface","prixUnitaire", "hetra"};
+    String libEntete[] = {"id", "idProprietaire","mois","annee","idMaison","surface","prixUnitaire","coeff" ,"hetra"};
+    String libEnteteAffiche[] = {"id", "idProprietaire","mois","annee","idMaison","surface","prixUnitaire","coeff", "hetra"};
     PageRecherche pr = new PageRecherche(bc, request, listeCrt, listeInt, 3, libEntete, libEntete.length);
     pr.setTitre("Liste des ventes ");
     pr.setUtilisateur((user.UserEJB) session.getValue("u"));
     pr.setLien((String) session.getValue("lien"));
     pr.setApres("impot/facture/facture.jsp");
-    String[] colSomme = { "surface", "prixUnitaire"};
+    String[] colSomme = { "surface", "hetra"};
     pr.creerObjetPage(libEntete, colSomme);
     pr.getFormu().getChamp("id").setLibelle("ID");
     pr.getFormu().getChamp("idMaison").setLibelle("idMaison");
