@@ -11,14 +11,16 @@
 
 <%
     String idMaison = request.getParameter("idMaison");
+    int mois=0;
+    int annee=0;
     try {
         String idCommune = request.getParameter("idCommune");
         if (idCommune == null) {
             idCommune = (String) request.getSession().getAttribute("idCommune");
         }
 
-        int mois = Integer.parseInt(request.getParameter("mois"));
-        int annee = Integer.parseInt(request.getParameter("annee"));
+        mois = Integer.parseInt(request.getParameter("mois"));
+        annee = Integer.parseInt(request.getParameter("annee"));
         
         
         FactureMaison.insererAllFactureMaison(idCommune,mois,annee);
@@ -27,10 +29,10 @@
         
     } catch (Exception e) {
         
-        response.sendRedirect("../module.jsp?but=impot/facture/formFacture.jsp/&erreur=" + java.net.URLEncoder.encode(e.getMessage(), "UTF-8"));
+        response.sendRedirect("../../module.jsp?but=impot/facture/formFacture.jsp/&erreur=" + java.net.URLEncoder.encode(e.getMessage(), "UTF-8"));
         
         e.printStackTrace();
             
     }
-    response.sendRedirect("../module.jsp?but=impot/facture/facture.jsp");
+    response.sendRedirect("../../module.jsp?but=impot/facture/facture.jsp&mois=" + mois + "&annee=" + annee);
 %>

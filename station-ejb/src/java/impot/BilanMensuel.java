@@ -10,6 +10,7 @@ import java.util.List;
 
 import impot.Arrondissement;
 import impot.maison.Maison;
+import impot.maison.Proprietaire;
 import utilitaire.UtilDB;
 
 public class BilanMensuel {
@@ -82,9 +83,15 @@ public class BilanMensuel {
         Maison[] maisons=arrondissement.getMaisons();
         valiny=getBilanAnnuel(maisons, idCommune, annee);
         return valiny;
-
-
-
+    }
+    public static BilanMensuel[] getBilanAnnuelMaisonProprietaire(int annee,String idCommune,String idProp) throws Exception
+    {
+        BilanMensuel[] valiny=null;
+        Proprietaire proprietaire=new Proprietaire();
+        proprietaire.setId(idProp);
+        Maison[] maisons=proprietaire.getMaison();
+        valiny=getBilanAnnuel(maisons,idCommune,annee);
+        return valiny;
     }
     
     // public static BilanMensuel[] getBilanAnnuelArrondissement(int annee,String listeId)throws Exception{
