@@ -38,3 +38,15 @@ JOIN
     composant_maison cm
 ON 
     c.idComposant = cm.idComposant;
+
+
+
+CREATE VIEW v_maison_proprietaire AS
+SELECT 
+    m.idMaison,
+    p.id AS idProprietaire,
+    p.val AS nomProprietaire,
+    p.desce AS descriptionProprietaire,
+    m.localisation
+FROM maison m
+LEFT JOIN Proprietaire p ON m.idProp = p.id;

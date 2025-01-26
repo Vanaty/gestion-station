@@ -64,7 +64,78 @@ CREATE OR REPLACE FUNCTION getseqpaymentdetails
 IS
     next_value NUMBER;
 BEGIN
-    SELECT seq_payment_details.NEXTVAL INTO next_value FROM dual;
+    SELECT seq_payment_details
+    
+
+
+CREATE OR REPLACE FUNCTION getseqfacturemaison
+    RETURN NUMBER
+IS
+    next_value NUMBER;
+BEGIN
+    SELECT seq_facture_maison
+    
+    
+    
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .NEXTVAL INTO next_value FROM dual;
     RETURN next_value;
 END;
 /

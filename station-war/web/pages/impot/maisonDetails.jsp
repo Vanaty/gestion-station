@@ -11,14 +11,11 @@
         idCommune = (String) request.getSession().getAttribute("idCommune");
     }
     int annee=Integer.parseInt(request.getParameter("annee"));
-    String idArrondissement=request.getParameter("idArrondissement");
+    String idMaison=request.getParameter("idMaison");
     BilanMensuel[] bilansPaye=null;
-    if(idArrondissement!=null){
-        bilansPaye=BilanMensuel.getBilanAnnuel(annee,idCommune,idArrondissement);    
-    }
-    else{
-        bilansPaye=BilanMensuel.getBilanAnnuel(annee,idCommune);
-    }
+    
+        bilansPaye=BilanMensuel.getBilanAnnuelMaison(annee,idCommune,idMaison);
+    
     DecimalFormat decimalFormat = new DecimalFormat("#");
 %>
 <div class="content-wrapper" style="padding: 5%">
@@ -28,7 +25,9 @@
                 <div class="col-md-6">
                     <div class="input-group mb-3">
                         <input type="number" name="annee" value="<%= annee %>" class="form-control" placeholder="Annee" aria-label="Username" aria-describedby="basic-addon1">
-                        <input type="hidden" value="impot/liste.jsp" name="but" class="form-control" placeholder="Annee" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="hidden" value="impot/maisonDetails.jsp" name="but" class="form-control" placeholder="Annee" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="hidden" value="<%= idMaison %>" name="idMaison">
+
                     </div>
                 </div>
                 <div>                    

@@ -6,6 +6,7 @@ package impot;
 
 import bean.CGenUtil;
 import bean.ClassMAPTable;
+
 import impot.maison.Maison;
 
 import java.sql.Connection;
@@ -14,85 +15,18 @@ import java.util.List;
 
 /**
  *
- * @author ryrab
+ * @author edodrandria
  */
-public class PaymentDetails extends ClassMAPTable{
-    String id;
-    private String idProprietaire;
-    public int mois;
-    public int annee;
-    public String idMaison;
-    double surface;
-    double prixUnitaire;
-    double hetra;
+public class PaymentDetails extends FactureMaison{
     
-    
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getIdProprietaire() {
-        return idProprietaire;
-    }
-
-    public void setIdProprietaire(String idProprietaire) {
-        this.idProprietaire = idProprietaire;
-    }
-
-    public int getMois() {
-        return mois;
-    }
-
-    public void setMois(int mois) {
-        this.mois = mois;
-    }
-
-    public int getAnnee() {
-        return annee;
-    }
-
-    public void setAnnee(int annee) {
-        this.annee = annee;
-    }
-
-    public String getIdMaison() {
-        return idMaison;
-    }
-
-    public void setIdMaison(String idMaison) {
-        this.idMaison = idMaison;
-    }
-
-    public double getSurface() {
-        return surface;
-    }
-
-    public void setSurface(double surface) {
-        this.surface = surface;
-    }
-
-    
-
-    public double getPrixUnitaire() {
-        return prixUnitaire;
-    }
-
-    public void setPrixUnitaire(double prixUnitaire) {
-        this.prixUnitaire = prixUnitaire;
-    }
-
-    public double getHetra() {
-        return hetra;
-    }
-
-    public void setHetra(double hetra) {
-        this.hetra = hetra;
-    }
     public PaymentDetails(){
+        this.setNomTable("paymentDetails");
+    }
+    public PaymentDetails(String idCommune,String idMaison,int mois,int annee){
+        this.setIdCommune(idCommune);
+        this.setIdMaison(idMaison);
+        this.setMois(mois);
+        this.setAnnee(annee);
         this.setNomTable("paymentDetails");
     }
     @Override
@@ -100,15 +34,22 @@ public class PaymentDetails extends ClassMAPTable{
         this.preparePk("PAYD", "getseqpaymentdetails");
         this.setId(makePK(c));
     }
+    public void insererPayementDetails() throws Exception{
+        Maison maison=Maison.getMaison(this.getIdMaison())[0];
+        
+        if(maison.getPayment(this.getAnnee(),this.getMois()).length > 0){
+            throw new Exception("efa paye");
+        }
+        maison.getMaison(this.getIdCommune(), this.getAnnee(), this.getMois());
+        
+        this.setSurface(maison.getSurface());
+        this.setCoeff(maison.calcuelecoefficient());
+        this.setIdProprietaire(maison.getIdProp());
+        this.setPrixUnitaire(maison.getPrixunitaire().getValeur());
+        this.setHetra(maison.calculerMontantAPayer());
+        this.insertToTable();
+    } 
     
-    @Override
-    public String getTuppleID() {
-        return id;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public String getAttributIDName() {
-        return "id";// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
     
 }

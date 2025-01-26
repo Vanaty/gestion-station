@@ -41,6 +41,15 @@ public class Arrondissement  {
         return gson.toJson(listeArrondissement);
 
     }
+    public String getAllJsonPost() throws Exception{
+        HashMap<String,String>[] dico = Outil.getDicoTable("SELECT m.idMaison as id,m.nomProprietaire, a.arrondissement\r\n" + //
+                            "FROM v_maison_proprietaire m\r\n" + //
+                            "JOIN arrondissement a\r\n" + //
+                            "ON SDO_RELATE(a.delimitation, m.localisation, 'mask=ANYINTERACT') = 'TRUE'\r\n" + //
+                            "WHERE a.idArrondissement = '"+ idArrondissement +"'",null);
+        Gson gson = new Gson();
+        return gson.toJson(dico);
+    }
     public Maison[] getMaisonsid() throws Exception {
         String sql = String.format("select * from v_maison_arr where idArrondissement='%s' and idCommune='%s'",getIdArrondissement(), getIdCommune());
         return (Maison[])CGenUtil.rechercher(new Maison(), sql);

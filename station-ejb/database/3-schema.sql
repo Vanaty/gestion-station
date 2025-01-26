@@ -92,12 +92,26 @@ CREATE TABLE arrondissement(
 CREATE TABLE composant_maison(
    idMaison VARCHAR2(50) ,
    idComposant VARCHAR2(50) ,
-   coeff VARCHAR(50),
+   coeff NUMBER(15,2),
    mois INTEGER,
    annee INTEGER,
    PRIMARY KEY(idMaison, idComposant),
    FOREIGN KEY(idMaison) REFERENCES maison(idMaison),
    FOREIGN KEY(idComposant) REFERENCES composant(idComposant)
+);
+
+CREATE TABLE FactureMaison (
+    id VARCHAR2(50) PRIMARY KEY,
+    idProprietaire VARCHAR2(50) NOT NULL,
+    idCommune VARCHAR2(50) NOT NULL,
+    mois INTEGER NOT NULL,
+    annee INTEGER NOT NULL,
+    idMaison VARCHAR2(50) NOT NULL,
+    surface NUMBER(10,2),
+    nbetage NUMBER(10,2),
+    prixUnitaire NUMBER(15,2),
+    hetra NUMBER(15,2),
+    coeff NUMBER(18,5)
 );
 
 select c.idComposant,composant from composant_maison cm join composant c on c.idComposant = cm.idComposant where idMaison = 'MSN006'

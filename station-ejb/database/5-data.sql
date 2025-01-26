@@ -1,7 +1,7 @@
 -- 1er Arrondissement
-INSERT INTO IMPOTUSER(id, idCommune,idUtilisateur) VALUES('IUSER001','COMM1','1060')
 INSERT INTO Commune (id, val, desce) VALUES ('COMM1', 'Antananarivo', 'Capitale de Madagascar');
 INSERT INTO Commune (id, val, desce) VALUES ('COMM2', 'Toamasina', 'Ville portuaire');
+INSERT INTO IMPOTUSER(id, idCommune,idUtilisateur) VALUES('IUSER001','COMM1','1060');
 
 
 INSERT INTO arrondissement (idArrondissement,idCommune ,arrondissement, delimitation)
@@ -102,8 +102,8 @@ VALUES (
 
 INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP001', 'Jean Dupont', 'Propriétaire de plusieurs terrains');
 INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP002', 'Marie Lafont', 'Investisseur immobilier');
-INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP003', 'Paul Martin', 'Propriétaire d’un immeuble locatif');
-INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP004', 'Sophie Bernard', 'Gère des terrains agricoles');
+INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP003', 'Paul Martin', 'Propriétaire d un immeuble locatif');
+INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP004', 'Sophie Bernard', 'Gere des terrains agricoles');
 INSERT INTO Proprietaire (id, val, desce) VALUES ('PROP005', 'David Morel', 'Possède des résidences secondaires');
 
 -- Insertion des maisons avec des identifiants explicites
@@ -177,49 +177,49 @@ INSERT INTO payment (idPayment, mois, annee, idMaison)
 VALUES ('PAY00'||getseqpayment(), 2, 2025, 'MSN1');
 
 -- Insertion des paiements pour la maison MSN007
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN2');
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN2');
 
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 3, 2025, 'MSN2');
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 3, 2025, 'MSN2');
 
--- Insertion des paiements pour la maison MSN008
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 2, 2025, 'MSN003');
+-- -- Insertion des paiements pour la maison MSN008
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 2, 2025, 'MSN003');
 
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 4, 2025, 'MSN003');
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 4, 2025, 'MSN003');
 
--- Insertion des paiements pour la maison MSN009
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN004');
+-- -- Insertion des paiements pour la maison MSN009
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN004');
 
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 5, 2025, 'MSN004');
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 5, 2025, 'MSN004');
 
--- Insertion des paiements pour la maison MSN0010
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN005');
+-- -- Insertion des paiements pour la maison MSN0010
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN005');
 
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 7, 2025, 'MSN005');
-
-
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN006');
-
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN006');
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 7, 2025, 'MSN005');
 
 
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN007');
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN006');
 
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 9, 2025, 'MSN007');
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 6, 2025, 'MSN006');
 
-INSERT INTO payment (idPayment, mois, annee, idMaison)
-VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN007');
+
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 8, 2025, 'MSN007');
+
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 9, 2025, 'MSN007');
+
+-- INSERT INTO payment (idPayment, mois, annee, idMaison)
+-- VALUES ('PAY00'||getseqpayment(), 1, 2025, 'MSN007');
 
 insert into matiere(idMatiere,matiere) values('MAT001','Bois');
 insert into matiere(idMatiere,matiere) values('MAT002','Fer');

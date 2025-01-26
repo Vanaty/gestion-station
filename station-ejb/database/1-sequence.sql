@@ -45,3 +45,9 @@ INCREMENT BY 1
 NOMAXVALUE                 
 CACHE 20                   
 ;
+CREATE SEQUENCE seq_facture_maison
+START WITH 1               
+INCREMENT BY 1             
+NOMAXVALUE                 
+CACHE 20                   
+;

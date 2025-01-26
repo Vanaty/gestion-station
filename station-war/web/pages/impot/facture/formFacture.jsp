@@ -5,14 +5,13 @@
 --%>
 <%@page import="impot.BilanMensuel"%>
 <%
-    String idMaison=request.getParameter("idMaison");
     String[] months=BilanMensuel.getMonths();
 %>
 <div class="content-wrapper" style="padding: 5%">
     <div class="row">
         <div class="col-md-6" style="padding: 1%;background-color: white;">
             <h4>Insertion Maison</h4>
-            <form action="impot/insertPayment.jsp" method="post">
+            <form action="impot/facture/insererFacture.jsp" method="post">
                 <div class="row" style="margin-bottom: 1%">
                     <div class="col-md-6">
                         <div class="input-group mb-3">
@@ -26,7 +25,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="input-group mb-3">
-                            <input type="hidden" name="idMaison" value="<%= idMaison %>" class="form-control" placeholder="Largeur" aria-label="Username" aria-describedby="basic-addon1">
+                          
                             <input type="number" name="annee" class="form-control" placeholder="Annee" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </div>

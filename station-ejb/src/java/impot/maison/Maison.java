@@ -15,6 +15,20 @@ public class Maison extends ClassMere {
     Prix prixunitaire;
     Composant[] composant;
     double surface;
+    private Payment[] payments;
+
+    public Payment[] getPayments() throws Exception{
+        
+        return payments;
+    }
+    
+
+    public void setPayments(Payment[] payments) {
+        
+        
+        this.payments = payments;
+    }
+    
 
     public Maison() throws Exception {
         this.setNomTable("maison");
@@ -91,7 +105,7 @@ public class Maison extends ClassMere {
 
     public double getSurface(int mois, int annee) throws Exception {
         MaisonFille mf = getMaisonFille(mois, annee);
-        return mf.largeur * mf.longueur * mf.nbEtage;
+        return mf.getSurface();
     }
 
     public Composant[] getComposant(int mois, int annee) throws Exception {
@@ -114,7 +128,7 @@ public class Maison extends ClassMere {
                 "      AND vc.idMaison = t.idMaison " +
                 "      AND vc.idMaison = '" + getIdMaison() + "'";
 
-                System.out.println("ito le requete mamoka anle coeff "+sql);
+                // System.out.println("ito le requete mamoka anle coeff "+sql);
         // Utilisation de la méthode utilitaire pour exécuter la requête et récupérer
         // les résultats
         return (Composant[]) CGenUtil.rechercher(new Composant(), sql);
@@ -159,6 +173,42 @@ public class Maison extends ClassMere {
         Payment[] payment=(Payment[])CGenUtil.rechercher(new Payment(), "select * from payment where idMaison = '"+this.getIdMaison()+"' and mois="+mois+" and annee="+annee);
     
     return payment;
+    }
+    // public Payment[] getPaymentsPaye(int annee) throws Exception{
+    //     String sql="select * from Payment where idMaison="+this.idMaison+" and annee="+annee +" ORDER BY annee ASC, mois ASC" ;
+    //      return (Payment[]) CGenUtil.rechercher(new Payment(), sql);
+    // }
+    public Payment[] getAllPaymentsAnnee(int annee) throws Exception
+    {
+        Payment[] payments=new Payment[12];
+        for (int i = 0; i < payments.length; i++) {
+            Payment[] paye=this.getPayment(annee, i+1);
+            if(paye.length==0){
+                Payment apidirina=new Payment(this,i+1,annee,false);
+                apidirina.setIdMaison(this.idMaison);
+                payments[i]=apidirina;
+                continue;
+             }
+             payments[i]=paye[0].setPaye(true);
+        }
+        return payments;
+        
+
+    }
+    public void getMaison(String idCommune,int annee,int mois) throws Exception{
+        this.setPrixunitaire(idCommune,mois,annee);
+        this.setComposant(mois,annee);
+        this.setSurface(mois,annee);
+        
+    }
+    public static Maison[] getMaison(String idMaison) throws Exception
+    {   String sql="select * from Maison where idMaison = '"+idMaison+"'";
+        return (Maison[])CGenUtil.rechercher(new Maison(), sql);
+
+    }
+    public static Maison[] getAll() throws Exception {
+        String sql = String.format("select * from Maison");
+        return (Maison[])CGenUtil.rechercher(new Maison(), sql);
     }
 
 }

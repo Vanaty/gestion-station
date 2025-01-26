@@ -92,9 +92,19 @@ public class Payment extends ClassMAPTable{
     public Payment(){
         this.setNomTable("payment");
     }
+    public Payment(String nomTable){
+        this.setNomTable(nomTable);
+    }
     
     public Maison getMaison(){
         return this.maison;
+    }
+    public Maison getMaison(String idCommune,int mois ,int annee) throws Exception{
+        Maison valiny=new Maison();
+        valiny.setIdMaison(this.getIdMaison());
+        valiny.getMaison(idCommune, annee, mois);
+        return valiny;
+
     }
     
     public Payment setPaye(boolean paye){
@@ -108,20 +118,20 @@ public class Payment extends ClassMAPTable{
         this.idMaison=idMaison;
     }
     
-    // public static Payment[] getAllPayments(int annee,Connection connection,String idArrondissement) throws Exception{
-    //     Maison[] maisons=Maison.getMaisonByIdArrondissement(idArrondissement, connection);
-    //     Payment[] payments=new Payment[maisons.length*12];
-    //     int count=0;
-    //     System.out.println(maisons.length+" maison");
-    //     for(Maison maison : maisons){
-    //         for(Payment payment : maison.getPayment(annee, connection)){
-    //             payment.maison=maison;
-    //             payments[count]=payment;
-    //             count++;
-    //         }
-    //     }
-    //     return payments;
-    // }
+    public static Payment[] getAllPayments(Maison[] maisons,int annee) throws Exception{
+        
+        Payment[] payments=new Payment[maisons.length*12];
+        int count=0;
+        // System.out.println(maisons.length+" maison");
+        for(Maison maison : maisons){
+            for(Payment payment : maison.getAllPaymentsAnnee(annee)){
+                payment.maison=maison;
+                payments[count]=payment;
+                count++;
+            }
+        }
+        return payments;
+    }
     
     // public static Payment[] getAllPayments(int annee,Connection connection) throws Exception{
     //     Maison[] maisons=(Maison[]) CGenUtil.rechercher(new Maison(), "select * from maison", connection);

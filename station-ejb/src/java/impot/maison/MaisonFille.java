@@ -79,6 +79,10 @@ public class MaisonFille extends ClassFille {
     public void setAnnee(int annee) {
         this.annee = annee;
     }
+    public double getSurface()
+    {
+        return longueur*largeur*nbEtage;
+    }
     // 
                    
 }

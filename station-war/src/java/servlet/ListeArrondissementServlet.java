@@ -49,13 +49,9 @@ SELECT id,nom,'['||LISTAGG('['||TO_CHAR(y, '999.9999')||','|| TO_CHAR(x, '999.99
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
         String id = req.getParameter("id");
-        HashMap<String,String>[] dico = Outil.getDicoTable("SELECT m.idMaison as id, m.largeur, m.longueur, m.nbEtage as nb_etage, a.arrondissement\r\n" + //
-                            "FROM maison m\r\n" + //
-                            "JOIN arrondissement a\r\n" + //
-                            "ON SDO_RELATE(a.delimitation, m.localisation, 'mask=ANYINTERACT') = 'TRUE'\r\n" + //
-                            "WHERE a.idArrondissement = '"+ id +"'",null);
-        Gson gson = new Gson();
-        String jsonResponse = gson.toJson(dico);
+        Arrondissement arrondissement=new Arrondissement();
+        arrondissement.setIdArrondissement(id);
+        String jsonResponse = arrondissement.getAllJsonPost();
         resp.getWriter().print(jsonResponse);
         System.out.println(jsonResponse);
 

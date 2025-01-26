@@ -37,7 +37,18 @@ function afficheMaison() {
              // Ajouter un marqueur sur la carte
              L.marker([lat, lon])
                  .addTo(map)
-                 .bindPopup("<button onclick=\"window.open('module.jsp?but=impot/formPayment.jsp?idMaison="+maison.IDMAISON+"')\">Payer impot</button>");
+                 .bindPopup(`
+                    <div>
+                        <button onclick="window.open('module.jsp?but=impot/payment/formPayment.jsp&idMaison=${maison.IDMAISON}')">
+                            Payer impôt
+                        </button>
+                        <br>
+                        <button onclick="window.open('module.jsp?but=impot/maisonDetails.jsp&idMaison=${maison.IDMAISON}&annee=2025')">
+                            Détails Maison
+                        </button>
+                    </div>
+                `);
+
          });
      })
      .catch(error => {
@@ -59,10 +70,11 @@ function afficheArrondissement() {
      .then(data => { 
          console.log("Données reçues :", data);
          data.forEach(arrondissement => {
+            // console.log(arrondissement);
              // Convertir les coordonnées de chaîne en tableau
              const coordinates = JSON.parse(arrondissement.COORDINATES);
              // Ajouter un polygone sur la carte
-             console.log("Les coordonnees de " + arrondissement.ID + " est ", coordinates);
+            //  console.log("Les coordonnees de " + arrondissement.ID + " est ", coordinates);
 
              // Résultat
              const polygon =  L.polygon(
@@ -76,7 +88,8 @@ function afficheArrondissement() {
                  .bindPopup(`
                     <button onclick="listeImpot(window.open('module.jsp?but=impot/liste.jsp&idArrondissement=${arrondissement.ID}&annee=2025'))">impot</button>`);
                  //.bindPopup(`<b>${arrondissement.NOM}</b><br>ID: ${arrondissement.ID}`);
-                 console.log("Les coordonnees de " + arrondissement.NOM + " est ", coordinates);
+                console.log(arrondissement);
+                 //  console.log("Les coordonnees de " + arrondissement.NOM + " est ", coordinates);
                  
                  polygon.on('click', () => {
                      console.log(`Polygon ${arrondissement.ID} clicked!`);
