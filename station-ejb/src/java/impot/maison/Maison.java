@@ -93,7 +93,7 @@ public class Maison extends ClassMere {
     }
 
     public double calculeSurface(int longueur, int large, int nbetage) {
-        return longueur * large * nbetage;
+        return longueur * large * (nbetage + 1);
     }
 
     public MaisonFille getMaisonFille(int mois, int annee) throws Exception {
