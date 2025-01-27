@@ -39,6 +39,9 @@ function afficheMaison() {
                  .addTo(map)
                  .bindPopup(`
                  <div>
+                    <button">
+                    ${maison.IDMAISON}
+                    </button>
                     <button onclick="window.location.href='module.jsp?but=impot/payment/formPayment.jsp&idMaison=${maison.IDMAISON}'">
                         Payer impôt
                     </button>

@@ -56,6 +56,7 @@
                             <a href="module.jsp?but=impot/liste.jsp&annee=2025" class=""><i class="fa fa-list"></i>Liste paye & non paye</a>
                             <a href="module.jsp?but=impot/facture/formFacture.jsp" class=""><i class="fa fa-list"></i>Facture</a>
                             <a href="module.jsp?but=impot/proprietaire/formProprietaire.jsp" class=""><i class="fa fa-list"></i>Proprietaire</a>
+                            <a href="module.jsp?but=impot/payment/facture-liste-paye.jsp" class=""><i class="fa fa-list"></i>Facture paye</a>
 
                         </li>
                     </ul>
