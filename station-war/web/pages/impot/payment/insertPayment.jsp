@@ -31,10 +31,10 @@
         
     } catch (Exception e) {
         
-        response.sendRedirect("../module.jsp?but=impot/formPayment.jsp&idMaison=" + idMaison + "&erreur=" + java.net.URLEncoder.encode(e.getMessage(), "UTF-8"));
+        response.sendRedirect("../../module.jsp?but=impot/formPayment.jsp&idMaison=" + idMaison + "&erreur=" + java.net.URLEncoder.encode(e.getMessage(), "UTF-8"));
         
         e.printStackTrace();
             
     }
-    response.sendRedirect("../module.jsp?but=impot/payment/facture-liste-paye.jsp");
+    response.sendRedirect("../../module.jsp?but=impot/payment/facture-liste-paye.jsp");
 %>
